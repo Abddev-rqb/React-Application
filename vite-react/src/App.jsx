@@ -1,40 +1,68 @@
 import './App.css'
 
 function App() {
-  // const name = "Alice";
-  // const buttonLable = "Click me"
-  // const imgUrl = 'https://placehold.co/50x50';
-  const isLogged = false;
-  const element = <h1>{isLogged ? "Welcome back !" : "Please Login to continue"}</h1>
-  const message = [1,"message", "message2"];
-  const now = new Date();
-  const isMorning = now.getHours() < 12;
-  function Welcome(name){
-    return (<h1>Hello, {name}</h1>);
+  const name = "Abdul Raqeeb";
+  const prof = "Software Architect";
+  const projects = [
+  {
+    title: "Project One",
+    description: "A project with PHP at the backEnd",
+    link: "#"
+  },
+  {
+    title: "Project Two",
+    description: "A project with JAVA spring boot FullStack",
+    link: "#"
+  },
+  {
+    title: "Project Three",
+    description: "A project with REACT at frontEnd",
+    link: "#"
   }
-  function Greetings(isMorning){
-    if (isMorning){
-      return <h1>Good morning</h1>
-    }
-    return <h1>Good evening</h1>
-
-  }
+  ];
   return (
-    // <div>
-    //   <h1>Hello, {name}</h1>
-    //   <button style={{background:"green", color:"white"}} onClick={() => alert(`Button clicked!`)}>{buttonLable}</button>
-    //   <img src={imgUrl}/>
-    // </div>
-    // <div>
-    //   {element}
-    //   {message.length > 0 && <h2>You have unread "{message.length}" messages</h2>}
-    // </div>
-    <div>
-      {Welcome("Alice")}
-      {Greetings(isMorning)}
+    <div className='App'>
+      {/* {Header Section} */}
+      <header className='header'>
+        <h1>{name}</h1>
+        <p>{prof}</p>
+        <nav>
+          <a href='#About'>About</a>
+          <a href='#projects'>Projects</a>
+          <a href='#contact'>Contact</a>
+        </nav>
+      </header>
+      {/* {About Section} */}
+      <section id='about' className='about-section'>
+        <h2>About Me</h2>
+        <p>Hello! I am {name}, A passionate {prof} I love building web application that solves real
+          world user problems.
+        </p>
+      </section>
+      {/* {Project Section} */}
+      <section id='project' className='projects-section'>
+        <h2>Projects</h2>
+        <div className='projects-list'>
+          {projects.map((project, index) =>(
+            <div key={index} className='project-items'>
+              <h3>{project.title}</h3>
+              <h3>{project.description}</h3>
+              <a href={project.link} target='_blank' rel="nooponer noreferrer">View Project</a>
+            </div>
+          ))}
+        </div>
+      </section>
+      {/* {Contact Section} */}
+      <section id='contact' className='contact-section'>
+        <h2>Contact Me</h2>
+        <p>If like to get in touch, feel free to email at <a href='#'> abdulsameer.rq61@gmail.com</a></p>
+      </section>
+
+      {/* {Footer Section} */}
+      <section className='footer'>
+        <p>2025. All Rights Reserved</p>
+      </section>
     </div>
-
-
   )
 }
 
