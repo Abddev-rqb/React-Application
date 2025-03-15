@@ -1,22 +1,19 @@
-import About from './components/About';
-import Header from './components/Header';
-import Project from './components/Project';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const name = "Abdul Raqeeb";
-  const prof = "Software Architect";
+  const [mousePosition, setMousePosition] = useState({x:0, y:0})
+  useEffect(() =>{
+    const handleMouseMove = (event) =>{
+      setMousePosition({x:event.clientX, y:event.clientY});
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+  },[]);
 
   return (
-    <div className='App'>
-      <Header />
-      <About />
-      <Project />
-      <Contact />
-      <Footer />
-
+    <div>
+      <h2>Mouse Listener</h2>
+      <p>X : {mousePosition.x} , Y : {mousePosition.y}</p>
       </div>
   )
 }
