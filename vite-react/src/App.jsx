@@ -1,23 +1,27 @@
-import About from './components/About';
-import Header from './components/Header';
-import Project from './components/Project';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useState } from 'react'
 import './App.css'
+import { useEffect } from 'react';
 
 function App() {
-  const name = "Abdul Raqeeb";
-  const prof = "Software Architect";
+  const [time, setTime] = useState(new Date());
+  useEffect(() => {
+    const timeId = setInterval(() => setTime(new Date));
+    return () => clearInterval(timeId);
+  },[]);
+  const formattedTime = time.toLocaleTimeString('en-US',
+    {
+      hour:'2-digit',
+      minute:'2-digit',
+      second:'2-digit'
+    }
+  )
 
   return (
-    <div className='App'>
-      <Header />
-      <About />
-      <Project />
-      <Contact />
-      <Footer />
-
+    <div className='clock-container'>
+      <div className='clock'>
+        {formattedTime}
       </div>
+    </div>
   )
 }
 
